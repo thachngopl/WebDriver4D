@@ -3,7 +3,7 @@ object Form1: TForm1
   Top = 0
   Caption = 'Form1'
   ClientHeight = 554
-  ClientWidth = 757
+  ClientWidth = 780
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,8 +13,9 @@ object Form1: TForm1
   OldCreateOrder = False
   OnCreate = FormCreate
   OnDestroy = FormDestroy
+  OnShow = FormShow
   DesignSize = (
-    757
+    780
     554)
   PixelsPerInch = 96
   TextHeight = 13
@@ -44,7 +45,7 @@ object Form1: TForm1
   object rgWebDriver: TRadioGroup
     Left = 8
     Top = 49
-    Width = 741
+    Width = 764
     Height = 57
     Anchors = [akLeft, akTop, akRight]
     Caption = 'WebDriver'
@@ -61,7 +62,7 @@ object Form1: TForm1
   object memLog: TMemo
     Left = 8
     Top = 426
-    Width = 741
+    Width = 764
     Height = 111
     Anchors = [akLeft, akRight, akBottom]
     ScrollBars = ssVertical
@@ -70,7 +71,7 @@ object Form1: TForm1
   object PageControl1: TPageControl
     Left = 8
     Top = 144
-    Width = 741
+    Width = 764
     Height = 257
     ActivePage = TabSheet1
     Anchors = [akLeft, akTop, akRight, akBottom]
@@ -106,7 +107,7 @@ object Form1: TForm1
         Width = 265
         Height = 21
         TabOrder = 2
-        Text = 'txtFindName'
+        OnChange = txtFindNameChange
       end
       object Button3: TButton
         Left = 312
@@ -116,35 +117,43 @@ object Form1: TForm1
         Action = actFindElementByTag
         TabOrder = 3
       end
-      object txtElement: TEdit
+      object txtPropName: TEdit
         Left = 28
         Top = 104
         Width = 121
         Height = 21
         TabOrder = 4
-        Text = 'txtElement'
+        Text = 'txtPropName'
       end
       object Button4: TButton
-        Left = 423
-        Top = 28
+        Left = 167
+        Top = 100
         Width = 105
         Height = 25
-        Action = actGentInnerHTML
+        Action = actGetPropValue
         TabOrder = 5
+      end
+      object Button5: TButton
+        Left = 432
+        Top = 59
+        Width = 89
+        Height = 25
+        Action = actClickCurrentElement
+        TabOrder = 6
       end
     end
   end
   object txtWebDriverPath: TEdit
     Left = 89
     Top = 22
-    Width = 553
+    Width = 576
     Height = 21
     Anchors = [akLeft, akTop, akRight]
     TabOrder = 3
     OnChange = txtWebDriverPathChange
   end
   object Button2: TButton
-    Left = 648
+    Left = 671
     Top = 18
     Width = 101
     Height = 25
@@ -155,7 +164,7 @@ object Form1: TForm1
   object txtSession: TEdit
     Left = 50
     Top = 117
-    Width = 699
+    Width = 722
     Height = 21
     Anchors = [akLeft, akTop, akRight]
     Color = clAppWorkSpace
@@ -185,9 +194,13 @@ object Form1: TForm1
       Caption = 'SwitchFrame'
       OnExecute = actSwitchFrameExecute
     end
-    object actGentInnerHTML: TAction
-      Caption = 'GentInnerHTML'
-      OnExecute = actGentInnerHTMLExecute
+    object actGetPropValue: TAction
+      Caption = 'GentPropValue'
+      OnExecute = actGetPropValueExecute
+    end
+    object actClickCurrentElement: TAction
+      Caption = 'Click Element'
+      OnExecute = actClickCurrentElementExecute
     end
   end
 end
